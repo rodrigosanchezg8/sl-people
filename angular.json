@@ -28,9 +28,13 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.slim.js",
+              "node_modules/bootstrap/dist/js/bootstrap.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -123,6 +127,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "sl-people"
+    }
+  },
+  "defaultProject": "sl-people",
+  "cli": {
+    "analytics": "df663d65-677f-42a5-8ba0-8ac9e1207b1c"
+  }
 }

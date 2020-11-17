@@ -43,6 +43,8 @@ testem.log
 
 .package-json
 
+./src/environments
+
 # System Files
 .DS_Store
 Thumbs.db
