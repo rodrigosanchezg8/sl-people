@@ -1,0 +1,23 @@
+<div class="modal-header">
+  <h4 class="modal-title">Suggested duplicated people</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <table class="table">
+    <thead>
+    <th>Emails</th>
+    <th>Match</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let duplicated of similarEmails">
+      <td>{{duplicated.first}}</td>
+      <td>{{duplicated.second}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close()">Close</button>
+</div>
