@@ -6,6 +6,7 @@ import {Person} from '../models/person';
 import {TableState} from '../interfaces/table-state';
 import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {FrequencyCountModalComponent} from './frequency-count-modal/frequency-count-modal.component';
+import {DuplicatedPeopleModalComponent} from './duplicated-people-modal/duplicated-people-modal.component';
 
 @Component({
   selector: 'app-people',
@@ -42,6 +43,13 @@ export class PeopleComponent implements OnInit, OnDestroy {
 
   openFrequencyCountModal(): void {
     const modalRef: NgbModalRef = this.modalService.open(FrequencyCountModalComponent);
+    if (this.people && this.people.length) {
+      modalRef.componentInstance.people = this.people;
+    }
+  }
+
+  openDuplicatedPeopleModal(): void {
+    const modalRef: NgbModalRef = this.modalService.open(DuplicatedPeopleModalComponent);
     if (this.people && this.people.length) {
       modalRef.componentInstance.people = this.people;
     }
