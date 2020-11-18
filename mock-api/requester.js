@@ -9,12 +9,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use((req, res, next) => {
+app.use((req, res) => {
   res.header('Access-Control-Allow-Origin', '*');
-  next();
+  return intercepter(req, res);
 });
-
-app.all('*', (req, res) => intercepter(req, res));
 
 const intercepter = (req, res) => {
   if (req.url === '/')
@@ -27,7 +25,7 @@ const intercepter = (req, res) => {
     },
   };
 
-  if (req.body && req.body.length)
+  if (req.body && Object.keys(req.body).length)
     params.body = req.body
 
   request(params, (error, response, body) => {
