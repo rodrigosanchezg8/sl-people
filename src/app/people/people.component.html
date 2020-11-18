@@ -10,9 +10,13 @@
     *ngIf="!tableState.loading"
     class="card">
     <div class="card-body">
-      <div class="row">
-        <div class="col-12">
+      <div class="row mb-1">
+        <div class="col-6">
           <button type="button" class="btn btn-info w-100" (click)="openFrequencyCountModal()">Frequency count</button>
+        </div>
+        <div class="col-6">
+          <button type="button" class="btn btn-dark w-100" (click)="openDuplicatedPeopleModal()">Duplicated people
+          </button>
         </div>
       </div>
       <table class="table">

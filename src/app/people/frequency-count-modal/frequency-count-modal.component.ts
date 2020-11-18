@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {FrequencyCount} from '../../interfaces/frequency-count';
 import {QuickSortService} from '../../services/quick-sort.service';
+import {Person} from '../../models/person';
 
 @Component({
   selector: 'app-frequency-count-modal',
@@ -10,7 +11,7 @@ import {QuickSortService} from '../../services/quick-sort.service';
 })
 export class FrequencyCountModalComponent implements OnInit {
 
-  @Input() people;
+  @Input() people: Person[];
 
   public alphabetCount: FrequencyCount[];
   public alphabetKeys: string[];
