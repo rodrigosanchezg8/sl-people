@@ -1,14 +1,13 @@
+<app-toast></app-toast>
 <div class="container">
   <h1 class="text-center m-4">People</h1>
-  <div
-    *ngIf="tableState.loading"
-    class="spinner-border d-block m-auto"
-    role="status">
+  <div *ngIf="tableState.loading"
+       class="spinner-border d-block m-auto"
+       role="status">
     <span class="sr-only">Loading...</span>
   </div>
-  <div
-    *ngIf="!tableState.loading"
-    class="card">
+  <div *ngIf="!tableState.loading"
+       class="card">
     <div class="card-body">
       <div class="row mb-1">
         <div class="col-6">
@@ -30,7 +29,6 @@
           <td>{{person.fullName}}</td>
           <td>{{person.email_address}}</td>
           <td>{{person.title}}</td>
-          <td></td>
         </tr>
         </tbody>
       </table>
