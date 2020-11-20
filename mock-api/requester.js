@@ -29,10 +29,14 @@ const intercepter = (req, res) => {
     params.body = req.body
 
   request(params, (error, response, body) => {
-      if (error || response.statusCode !== 200)
-        return res.status(500).json({message: error ? error.message : 'Invalid endpoint'});
+      if (error || (response && response.statusCode >= 400)) {
+        return res.status(response.statusCode).json({
+          message: error && error.message ? error.message : '',
+          statusCode: response.statusCode
+        });
+      }
 
-      res.json(JSON.parse(body));
+      res.status(response.statusCode).json(JSON.parse(body));
     }
   )
 }
