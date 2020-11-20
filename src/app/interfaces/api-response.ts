@@ -1,5 +1,5 @@
 export interface APIResponse {
-  data: any[];
+  data: any[] | any;
   metadata: {
     filtering: any,
     paging: {
@@ -12,5 +12,5 @@ export interface APIResponse {
       sort_by: string,
       sort_direction: string
     }
-  }
+  };
 }
