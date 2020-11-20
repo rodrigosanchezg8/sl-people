@@ -8,7 +8,7 @@ export class QuickSortService {
   constructor() {
   }
 
-  public sort(array: any[], attribute: string, orderBy: string): any[] {
+  public sort(array: any[], attribute: string, orderBy: string = 'ASC'): any[] {
     if (array.length < 1 || !attribute || !attribute.length) {
       return [];
     }

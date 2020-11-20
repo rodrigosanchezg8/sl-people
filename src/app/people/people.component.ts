@@ -1,22 +1,19 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable, Subscription} from 'rxjs';
-import {APIResponse} from '../interfaces/api-response';
+import {Component, OnInit} from '@angular/core';
 import {Person} from '../models/person';
 import {TableState} from '../interfaces/table-state';
 import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {FrequencyCountModalComponent} from './frequency-count-modal/frequency-count-modal.component';
 import {DuplicatedPeopleModalComponent} from './duplicated-people-modal/duplicated-people-modal.component';
+import {PeopleService} from './people.service';
+import {ToastService} from '../toast/toast.service';
 
 @Component({
   selector: 'app-people',
   templateUrl: './people.component.html',
   styleUrls: ['./people.component.scss']
 })
-export class PeopleComponent implements OnInit, OnDestroy {
+export class PeopleComponent implements OnInit {
 
-  private peopleObservable: Observable<any>;
-  private peopleSubscribable: Subscription;
   private people: Person[];
 
   public tableState: TableState = {
@@ -24,21 +21,24 @@ export class PeopleComponent implements OnInit, OnDestroy {
     loading: true
   };
 
-  constructor(private http: HttpClient,
-              private modalService: NgbModal) {
+  constructor(private modalService: NgbModal,
+              private peopleService: PeopleService,
+              public toastService: ToastService) {
   }
 
   ngOnInit(): void {
     this.fetchPeople();
   }
 
-  fetchPeople(): void {
-    this.peopleObservable = this.http.get('v2/people');
-    this.peopleSubscribable = this.peopleObservable.subscribe((obs: APIResponse) => {
+  async fetchPeople(): Promise<void> {
+    try {
       this.tableState.loading = true;
-      this.people = Person.deserializeMany(obs.data);
+      this.people = await this.peopleService.findAll().toPromise();
       this.tableState.loading = false;
-    });
+    } catch (e) {
+      this.tableState.loading = false;
+      this.toastService.showError(e.message);
+    }
   }
 
   openFrequencyCountModal(): void {
@@ -53,10 +53,6 @@ export class PeopleComponent implements OnInit, OnDestroy {
     if (this.people && this.people.length) {
       modalRef.componentInstance.people = this.people;
     }
-  }
-
-  ngOnDestroy(): void {
-    this.peopleSubscribable.unsubscribe();
   }
 
 }

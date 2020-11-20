@@ -2,14 +2,16 @@ import {User} from './user';
 import {CustomField} from './custom-field';
 import {ActionCount} from './action-count';
 import {Account} from './account';
+import {Model} from './model';
+import {PersonStage} from './person-stage';
+import {Import} from './import';
 
-export class Person {
+export class Person extends Model {
 
-  id: number;
   created_at: Date;
   updated_at: Date;
-  last_contacted_at?: any;
-  last_replied_at?: any;
+  last_contacted_at: Date;
+  last_replied_at: Date;
   first_name: string;
   last_name: string;
   display_name: string;
@@ -18,40 +20,40 @@ export class Person {
   secondary_email_address: string;
   personal_email_address: string;
   phone: string;
-  phone_extension?: any;
-  home_phone?: any;
-  mobile_phone?: any;
-  linkedin_url?: any;
+  phone_extension: string;
+  home_phone: string;
+  mobile_phone: string;
+  linkedin_url: string;
   title: string;
   city: string;
   state: string;
   country: string;
-  work_city?: any;
-  work_state?: any;
-  work_country?: any;
-  crm_url?: any;
-  crm_id?: any;
-  crm_object_type?: any;
-  owner_crm_id?: any;
-  person_company_name?: any;
+  work_city: string;
+  work_state: string;
+  work_country: string;
+  crm_url: string;
+  crm_id: string;
+  crm_object_type: string;
+  owner_crm_id: string;
+  person_company_name: string;
   person_company_website: string;
-  person_company_industry?: any;
+  person_company_industry: string;
   do_not_contact: boolean;
   bouncing: boolean;
   locale: string;
-  personal_website?: any;
-  twitter_handle?: any;
-  last_contacted_type?: any;
+  personal_website: string;
+  twitter_handle: string;
+  last_contacted_type: string;
   job_seniority: string;
   custom_fields: CustomField[];
-  tags: any[];
-  contact_restrictions: any[];
+  tags: string[];
+  contact_restrictions: string[];
   counts: ActionCount[];
   account: Account;
   owner: User;
-  last_contacted_by?: any;
-  import?: any;
-  person_stage?: any;
+  last_contacted_by: User;
+  import: Import;
+  person_stage: PersonStage;
 
   static deserializeMany(objects: Person[]): Person[] {
     const people: Person[] = [];
@@ -63,14 +65,37 @@ export class Person {
   }
 
   constructor() {
+    super();
   }
 
-  deserialize(object: Person): Person {
+  public deserialize(object: Person): Person {
+    if (object.account) {
+      object.account = new Account().deserialize(object.account);
+    }
+    if (object.custom_fields) {
+      object.custom_fields = CustomField.deserializeMany(object.custom_fields);
+    }
+    if (object.owner) {
+      object.owner = new User().deserialize(object.owner);
+    }
+    if (object.counts) {
+      object.counts = ActionCount.deserializeMany(object.counts);
+    }
+    if (object.import) {
+      object.import = new Import().deserialize(object.import);
+    }
+    if (object.person_stage) {
+      object.person_stage = new PersonStage().deserialize(object.person_stage);
+    }
+    if (object.last_contacted_by) {
+      object.last_contacted_by = new User().deserialize(object.last_contacted_by);
+    }
+
     Object.assign(this, object);
     return this;
   }
 
-  get fullName(): string {
+  public get fullName(): string {
     return `${this.first_name} ${this.last_name}`;
   }
 
