@@ -26,10 +26,14 @@ export class PeopleComponent implements OnInit {
               public toastService: ToastService) {
   }
 
+
   ngOnInit(): void {
     this.fetchPeople();
   }
 
+  /**
+   * Level #1. Fetches the list of people from the API using the PeopleService and catches errors.
+   */
   async fetchPeople(): Promise<void> {
     try {
       this.tableState.loading = true;
@@ -41,6 +45,9 @@ export class PeopleComponent implements OnInit {
     }
   }
 
+  /**
+   * Handle the opening and parameters of FrequencyCountModalComponent
+   */
   openFrequencyCountModal(): void {
     const modalRef: NgbModalRef = this.modalService.open(FrequencyCountModalComponent);
     if (this.people && this.people.length) {
@@ -48,6 +55,9 @@ export class PeopleComponent implements OnInit {
     }
   }
 
+  /**
+   * Handle the opening and parameters of DuplicatedPeopleModalComponent
+   */
   openDuplicatedPeopleModal(): void {
     const modalRef: NgbModalRef = this.modalService.open(DuplicatedPeopleModalComponent);
     if (this.people && this.people.length) {

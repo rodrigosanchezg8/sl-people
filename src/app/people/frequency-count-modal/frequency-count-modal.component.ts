@@ -21,6 +21,10 @@ export class FrequencyCountModalComponent implements OnInit {
               private frequencyCountModalService: FrequencyCountModalService) {
   }
 
+  /**
+   * Level #2. Gets data from its service and presents a sorted table that displays the frequency count of all the unique characters
+   * in all the email addresses of the people.
+   */
   ngOnInit(): void {
     this.frequencyCount = this.frequencyCountModalService.getSortedFrequencyCount(this.people);
   }

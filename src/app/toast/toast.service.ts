@@ -7,6 +7,10 @@ export class ToastService {
 
   public toasts: any[] = [];
 
+  /**
+   * Manipulates the array that when pushed triggers the Ngb component and shows the successful message based on its properties.
+   * @param message Message to show
+   */
   public showSuccess(message = 'Success'): void {
     this.toasts.push({
       text: message,
@@ -16,6 +20,10 @@ export class ToastService {
     });
   }
 
+  /**
+   * Manipulates the array that when pushed triggers the Ngb component and shows the error message based on its properties.
+   * @param message Message to show
+   */
   public showError(message: string): void {
     this.toasts.push({
       text: message,

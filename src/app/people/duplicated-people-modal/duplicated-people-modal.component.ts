@@ -19,6 +19,9 @@ export class DuplicatedPeopleModalComponent implements OnInit {
               private duplicatedPeopleService: DuplicatedPeopleModalService) {
   }
 
+  /**
+   * Level #3. Gets data from its service and displays a table with all the duplicated matches.
+   */
   ngOnInit(): void {
     this.similarEmails = this.duplicatedPeopleService.getFilteredSuggestions(this.people);
   }

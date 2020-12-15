@@ -8,6 +8,10 @@ import {ToastService} from './toast.service';
 })
 export class ToastComponent {
 
+  /**
+   * This component has the HTML for the Ngb toast for bootstrap and SCSS for styling.
+   * @param toastService Injectable
+   */
   constructor(public toastService: ToastService) {
   }
 

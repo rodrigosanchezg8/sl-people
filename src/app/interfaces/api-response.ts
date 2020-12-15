@@ -1,3 +1,6 @@
+/**
+ * Used to catch the response from any request matching all the keys within the object received.
+ */
 export interface APIResponse {
   data: any[] | any;
   metadata: {
