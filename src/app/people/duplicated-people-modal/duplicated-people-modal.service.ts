@@ -10,6 +10,10 @@ export class DuplicatedPeopleModalService {
   constructor() {
   }
 
+  /**
+   * Creates a list of unique similar emails based on the call of hasMaxEditsDifference.
+   * @param people
+   */
   public getFilteredSuggestions(people: Person[]): SuggestedDuplicate[] {
     if (!people || !people.length) {
       return [];
@@ -37,6 +41,15 @@ export class DuplicatedPeopleModalService {
     return similarEmails;
   }
 
+  /**
+   * Used to know if two words are x edits away from difference.
+   * When there is a difference, the next letter of the larger string tries to match the same letter of the shorter
+   * string by handling their own indexes.
+   * @param first
+   * @param second
+   * @param maxDiffs
+   * @private
+   */
   private hasMaxEditsDifference(first: string, second: string, maxDiffs: number = 1): boolean {
     if ((Math.abs(first.length - second.length) > maxDiffs) || !first || !second) {
       return false;

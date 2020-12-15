@@ -8,6 +8,10 @@ import {Title} from '@angular/platform-browser';
 })
 export class AppComponent {
 
+  /**
+   * Set app title.
+   * @param titleService Service for title
+   */
   constructor(private titleService: Title) {
     this.titleService.setTitle('SalesLoft');
   }

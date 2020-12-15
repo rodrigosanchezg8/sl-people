@@ -5,6 +5,10 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {APIResponse} from '../interfaces/api-response';
 
+/**
+ * Abstract class of generic declaration useful to be extended by any model service. It receives the resource or model
+ * URI and the class model. It forces the implementation of every CRUD method.
+ */
 @Injectable({providedIn: 'root'})
 export abstract class CrudService<T> implements CrudOperations<T> {
 

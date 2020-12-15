@@ -14,6 +14,11 @@ export class FrequencyCountModalService {
     private nativeSortService: NativeSortService) {
   }
 
+
+  /**
+   * Calls concatenateEmails, generateFrequencyCount and quickSortService or nativeSortService to sort the frequency count.
+   * @param people List of people
+   */
   public getSortedFrequencyCount(people: Person[]): LetterFrequencyCount[] {
     const singleEmails: string = this.concatenateEmails(people);
     if (!singleEmails || !singleEmails.length) {
@@ -24,6 +29,11 @@ export class FrequencyCountModalService {
     return this.quickSortService.sort(frequencyCount, 'count', 'DESC');
   }
 
+  /**
+   * By the list of people received, it maps and joins every person by its email address into a string.
+   * @param people List of people
+   * @private
+   */
   private concatenateEmails(people: Person[]): string {
     if (!people || !people.length) {
       return;
@@ -33,6 +43,10 @@ export class FrequencyCountModalService {
     return emails.join('');
   }
 
+  /**
+   * Creates a LetterFrequencyCount array with the count of appearance of each letter.
+   * @param fromString string to generate frequency from
+   */
   public generateFrequencyCount(fromString: string): LetterFrequencyCount[] {
     if (!fromString || !fromString.length) {
       return [];
