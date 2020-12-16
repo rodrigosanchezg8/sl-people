@@ -17,8 +17,11 @@ export abstract class CrudService<T> implements CrudOperations<T> {
               protected Model: any) {
   }
 
-  public findAll(): Observable<T[]> {
-    return this.http.get(this.resourceURI).pipe(map((res: APIResponse) => this.Model.deserializeMany(res.data)));
+  public findAll(params: any = {}): Observable<any[]> {
+    return this.http.get<any>(this.resourceURI, {
+      responseType: 'json',
+      params
+    }).pipe(map((res: APIResponse) => this.Model.deserializeMany(res.data)));
   }
 
   public findOne(id: number): Observable<T> {
