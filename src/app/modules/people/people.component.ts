@@ -6,6 +6,7 @@ import {FrequencyCountModalComponent} from './frequency-count-modal/frequency-co
 import {DuplicatedPeopleModalComponent} from './duplicated-people-modal/duplicated-people-modal.component';
 import {PeopleService} from './people.service';
 import {ToastService} from '../../shared/components/toast/toast.service';
+import {AddPersonModalComponent} from './add-person-modal/add-person-modal.component';
 
 @Component({
   selector: 'app-people',
@@ -100,8 +101,28 @@ export class PeopleComponent implements OnInit {
       this.mPeople = this.peopleService.people;
       this.tableState.size = this.mPeople.length;
     } catch (e) {
-      this.mPeople = this.peopleService.people;
-      this.tableState.size = this.mPeople.length;
+      if (e.message) {
+        this.toastService.showError(e.message);
+      } else {
+        this.mPeople = this.peopleService.people;
+        this.tableState.size = this.mPeople.length;
+      }
+    }
+  }
+
+  /**
+   * Handle the opening of openAddPersonModalComponent in a modal
+   */
+  async openAddPersonModal(): Promise<void> {
+    const modalRef: NgbModalRef = this.modalService.open(AddPersonModalComponent);
+    modalRef.componentInstance.people = this.mPeople;
+
+    try {
+      await modalRef.result;
+    } catch (e) {
+      if (e.message) {
+        this.toastService.showError(e.message);
+      }
     }
   }
 
