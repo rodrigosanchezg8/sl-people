@@ -1,8 +1,8 @@
-import {Inject, Injectable} from '@angular/core';
-import {LetterFrequencyCount} from '../../interfaces/letter-frequency-count';
-import {Person} from '../../models/person';
-import {QuickSortService} from '../../services/quick-sort.service';
-import {NativeSortService} from '../../services/native-sort.service';
+import {Injectable} from '@angular/core';
+import {LetterFrequencyCount} from '../../../shared/interfaces/letter-frequency-count';
+import {Person} from '../../../shared/models/person';
+import {QuickSortService} from '../../../shared/services/quick-sort.service';
+import {NativeSortService} from '../../../shared/services/native-sort.service';
 
 @Injectable({
   providedIn: 'root'

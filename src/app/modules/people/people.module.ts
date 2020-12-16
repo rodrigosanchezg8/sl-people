@@ -5,7 +5,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FrequencyCountModalComponent} from './frequency-count-modal/frequency-count-modal.component';
 import {DuplicatedPeopleModalComponent} from './duplicated-people-modal/duplicated-people-modal.component';
-import {ToastModule} from '../toast/toast.module';
+import {ToastModule} from '../../shared/components/toast/toast.module';
 
 const routes: Routes = [
   {path: '', component: PeopleComponent}

@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {Person} from '../models/person';
-import {TableState} from '../interfaces/table-state';
+import {Person} from '../../shared/models/person';
+import {TableState} from '../../shared/interfaces/table-state';
 import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {FrequencyCountModalComponent} from './frequency-count-modal/frequency-count-modal.component';
 import {DuplicatedPeopleModalComponent} from './duplicated-people-modal/duplicated-people-modal.component';
 import {PeopleService} from './people.service';
-import {ToastService} from '../toast/toast.service';
+import {ToastService} from '../../shared/components/toast/toast.service';
 
 @Component({
   selector: 'app-people',
