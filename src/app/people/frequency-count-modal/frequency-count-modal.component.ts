@@ -25,8 +25,8 @@ export class FrequencyCountModalComponent implements OnInit {
    * Fetches all available people and gets sorted frequency count data from its service to present in the table.
    */
   async ngOnInit(): Promise<void> {
-    await this.peopleService.getAllAvailable();
-    this.frequencyCount = this.frequencyCountModalService.getSortedFrequencyCount(this.peopleService.allPeople);
+    await this.peopleService.fetchOfEveryPage();
+    this.frequencyCount = this.frequencyCountModalService.getSortedFrequencyCount(this.peopleService.people);
     this.loading = false;
   }
 

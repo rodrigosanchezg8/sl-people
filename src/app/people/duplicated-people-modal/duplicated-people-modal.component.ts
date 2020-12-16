@@ -26,8 +26,8 @@ export class DuplicatedPeopleModalComponent implements OnInit {
    * table with all the duplicated matches.
    */
   async ngOnInit(): Promise<void> {
-    await this.peopleService.getAllAvailable();
-    this.similarEmails = this.duplicatedPeopleService.getFilteredSuggestions(this.peopleService.allPeople);
+    await this.peopleService.fetchOfEveryPage();
+    this.similarEmails = this.duplicatedPeopleService.getFilteredSuggestions(this.peopleService.people);
     this.loading = false;
   }
 
