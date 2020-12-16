@@ -1,0 +1,29 @@
+<div class="modal-header">
+  <h4 class="modal-title">Email frequency count</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div
+  *ngIf="loading"
+  class="mr-auto ml-auto mt-3 mb-3 d-block spinner-border" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+<div *ngIf="!loading"
+     class="modal-body">
+  <table class="table">
+    <thead>
+    <th>Character</th>
+    <th>Count</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let fc of frequencyCount">
+      <td>{{fc.letter}}</td>
+      <td>{{fc.count}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close()">Close</button>
+</div>

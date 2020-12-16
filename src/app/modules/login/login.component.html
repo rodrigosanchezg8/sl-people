@@ -1,0 +1,37 @@
+<div class="home-container">
+  <img class="logo" src="/assets/sl-logo.png">
+  <h1 class="mb-3">SalesLoft</h1>
+  <div class="col-10 col-sm-4 m-auto">
+    <div class="card">
+      <div class="card-body">
+        <div class="login-form">
+          <h4 class="text-center login-text">Login</h4>
+          <div class="form-group">
+            <input type="text"
+                   class="form-control"
+                   value="employee@salesloft.com"
+                   name="username"
+                   placeholder="Username">
+          </div>
+          <div class="form-group">
+            <input type="password"
+                   value="*********"
+                   class="form-control"
+                   name="password"
+                   placeholder="Password">
+          </div>
+          <div class="form-group">
+            <button
+              routerLink="/home"
+              type="submit"
+              class="btn btn-primary btn-lg btn-block">Sign in
+            </button>
+          </div>
+          <p><a href="#">Lost your Password?</a></p>
+          <p class="text-center small">Don't have an account? <a href="#">Sign up here!</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

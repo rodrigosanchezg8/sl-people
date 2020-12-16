@@ -1,27 +1,57 @@
-# SlPeople
+# SLPeople
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+This project uses the SL API people information and features all levels of the document plus some added features.
 
-## Development server
+## Table of contents
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Build
 
-## Code scaffolding
+For production, simply run `node app` and `ng build -c production`, whereas for development you only need to use `ng serve`.
+You need to also run the proxy layer accessing the mock-api folder and running `node requester`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Environment
 
-## Build
+The project must include both files environments.ts and environment.prod.ts file within the environments folder.
+Please note that `ng build` or `ng serve` will use the first and `ng build -c production` will use the later.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+````
+export const environment = {
+  production: true, 
+  apiURI: 'myAPIURI', // The API URI needs to point to our requester app address.
+  apiKey: 'myAPIKey'
+};
+````
 
-## Running unit tests
+## Proxy layer
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+A script was made to bypass the CORS issue that comes when fetching from the SL API. It simply modifies
+the `Access-Control-Allow-Origin` header of the incoming request needs to be modified with value `*`.
+In order to do so, a `proxy` layer between the front-end and the API was added, and can be run by accessing the mock-api folder
+and running `node requester`. 
 
-## Running end-to-end tests
+In this folder a .env is necessary to be present and have the following variables.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+````
+API_URI= // SL API URI
+NODE_TLS_REJECT_UNAUTHORIZED=0 // Workaround for npm in case you are behind a proxy or protection.
+PORT=3000 // Port in which the API will run
+````
 
-## Further help
+## Modules, components & services notes
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Please note that each component is used to only present information, hence, services work for HTTP 
+requests or for a larger logic that can be separated.
+
+## Content
+
+- [x] Level 1 - Fetch
+- - [x] Pagination
+- [x] Level 2 - Frequency count
+- - [x] Every person in the API
+- [x] Level 3 - Duplicated
+- - [x] Every person in the API
+
+
+
+
+
