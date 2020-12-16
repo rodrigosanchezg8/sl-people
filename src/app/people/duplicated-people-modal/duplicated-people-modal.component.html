@@ -1,11 +1,17 @@
 <div class="modal-header">
   <h4 class="modal-title">Suggested duplicated people</h4>
-  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.close()">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <div class="modal-body">
-  <table class="table">
+  <div
+    *ngIf="loading"
+    class="mr-auto ml-auto mt-3 mb-3 d-block spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <table *ngIf="!loading"
+         class="table">
     <thead>
     <th>Emails</th>
     <th>Match</th>

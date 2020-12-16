@@ -45,8 +45,11 @@ requests or for a larger logic that can be separated.
 ## Content
 
 - [x] Level 1 - Fetch
+- - [x] Pagination
 - [x] Level 2 - Frequency count
+- - [x] Every person in the API
 - [x] Level 3 - Duplicated
+- - [x] Every person in the API
 
 
 
