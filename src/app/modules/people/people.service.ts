@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Person} from '../../shared/models/person';
 import {HttpClient} from '@angular/common/http';
 import {CrudService} from '../../shared/services/crud.service';
+import {ToastService} from '../../shared/components/toast/toast.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class PeopleService extends CrudService<Person> {
    * `Person` are provided.
    * @param http Injectable
    */
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient,
+              private toastService: ToastService) {
     super(http, 'v2/people', Person);
   }
 
@@ -27,20 +29,24 @@ export class PeopleService extends CrudService<Person> {
       return;
     }
 
-    const perPage = 100;
-    let page = 1;
-    let hasResults: boolean;
+    try {
+      const perPage = 100;
+      let page = 1;
+      let hasResults: boolean;
 
-    do {
-      const pagePeople: Person[] = await this.findAll({
-        per_page: perPage,
-        page
-      }).toPromise();
-      this.people.push(...pagePeople);
+      do {
+        const pagePeople: Person[] = await this.findAll({
+          per_page: perPage,
+          page
+        }).toPromise();
+        this.people.push(...pagePeople);
 
-      hasResults = !!pagePeople.length;
-      page++;
-    } while (hasResults);
+        hasResults = !!pagePeople.length;
+        page++;
+      } while (hasResults);
+    } catch (e) {
+      this.toastService.showError(e.message);
+    }
   }
 
 }
