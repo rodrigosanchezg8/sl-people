@@ -1,13 +1,14 @@
 import {Model} from './model';
 
-export class User extends Model {
+export class User implements Model {
 
+  id: number;
+  _href: string;
   guid: string;
   first_name: string;
   last_name: string;
 
   constructor() {
-    super();
   }
 
   public deserialize(object: User): User {

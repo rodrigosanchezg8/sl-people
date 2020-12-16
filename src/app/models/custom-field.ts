@@ -1,7 +1,9 @@
 import {Model} from './model';
 
-export class CustomField extends Model {
+export class CustomField implements Model {
 
+  id: number;
+  _href: string;
   name: string;
   field_type: string;
   value_type: string;
@@ -22,7 +24,6 @@ export class CustomField extends Model {
   }
 
   constructor() {
-    super();
   }
 
   public deserialize(object: CustomField): CustomField {

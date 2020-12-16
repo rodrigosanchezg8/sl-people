@@ -1,7 +1,9 @@
 import {Model} from './model';
 
-export class Import extends Model {
+export class Import implements Model {
 
+  id: number;
+  _href: string;
   name: string;
   current_people_count: number;
   imported_people_count: number;

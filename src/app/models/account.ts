@@ -1,7 +1,9 @@
 import {Model} from './model';
 
-export class Account extends Model {
+export class Account implements Model {
 
+  id: number;
+  _href: string;
   name: string;
   domain: string;
   country: string;
@@ -9,7 +11,6 @@ export class Account extends Model {
   updated_at: Date;
 
   constructor() {
-    super();
   }
 
   public deserialize(object: Account): Account {

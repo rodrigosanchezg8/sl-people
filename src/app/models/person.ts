@@ -2,12 +2,14 @@ import {User} from './user';
 import {CustomField} from './custom-field';
 import {ActionCount} from './action-count';
 import {Account} from './account';
-import {Model} from './model';
 import {PersonStage} from './person-stage';
 import {Import} from './import';
+import {Model} from './model';
 
-export class Person extends Model {
+export class Person implements Model {
 
+  id: number;
+  _href: string;
   created_at: Date;
   updated_at: Date;
   last_contacted_at: Date;
@@ -65,7 +67,6 @@ export class Person extends Model {
   }
 
   constructor() {
-    super();
   }
 
   public deserialize(object: Person): Person {
