@@ -1,3 +1,11 @@
+html, body {
+  height: 100%;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+
+@import 'app/modules/main-layout/main-layout.component';
 @import '~bootstrap/scss/bootstrap';
-@import 'app/toast/toast.component';
-@import 'app/people/people.component';
+@import 'app/shared/components/toast/toast.component';
+@import 'app/modules/people/people.component';
+@import 'app/modules/login/login.component';

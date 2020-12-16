@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Person} from '../models/person';
+import {Person} from '../../shared/models/person';
 import {HttpClient} from '@angular/common/http';
-import {CrudService} from '../services/crud.service';
+import {CrudService} from '../../shared/services/crud.service';
 
 @Injectable({
   providedIn: 'root'

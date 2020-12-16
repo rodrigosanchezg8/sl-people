@@ -1,7 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {LetterFrequencyCount} from '../../interfaces/letter-frequency-count';
-import {Person} from '../../models/person';
+import {LetterFrequencyCount} from '../../../shared/interfaces/letter-frequency-count';
 import {FrequencyCountModalService} from './frequency-count-modal.service';
 import {PeopleService} from '../people.service';
 

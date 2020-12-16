@@ -1,7 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {Person} from '../../models/person';
-import {SuggestedDuplicate} from '../../interfaces/suggested-duplicate';
+import {SuggestedDuplicate} from '../../../shared/interfaces/suggested-duplicate';
 import {DuplicatedPeopleModalService} from './duplicated-people-modal.service';
 import {PeopleService} from '../people.service';
 

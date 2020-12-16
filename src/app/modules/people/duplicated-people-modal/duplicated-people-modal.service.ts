@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {SuggestedDuplicate} from '../../interfaces/suggested-duplicate';
-import {Person} from '../../models/person';
+import {SuggestedDuplicate} from '../../../shared/interfaces/suggested-duplicate';
+import {Person} from '../../../shared/models/person';
 
 @Injectable({
   providedIn: 'root'
