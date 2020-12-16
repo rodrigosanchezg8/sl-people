@@ -19,6 +19,10 @@ export class AddPersonModalComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  /**
+   * Save person to current given array of people and close modal
+   */
   save(): void {
     this.people.unshift(this.person);
     this.activeModal.close();
