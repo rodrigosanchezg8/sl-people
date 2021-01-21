@@ -4,6 +4,10 @@ This project uses the SL API people information and features all levels of the d
 
 ## Table of contents
 
+## Unit tests
+
+Simply run `ng test` to launch the Karma test runner. Every component has its own specs to ensure functionality.
+
 ### Build
 
 For production, simply run `node app` and `ng build -c production`, whereas for development you only need to use `ng serve`.
@@ -50,6 +54,8 @@ requests or for a larger logic that can be separated.
 - - [x] Every person in the API
 - [x] Level 3 - Duplicated
 - - [x] Every person in the API
+- [x] Unit tests
+- - [x] Every component
 
 
 
